@@ -1,0 +1,3 @@
+class_display,class_id,num_detections,mean_confidence,max_confidence
+car,2,6,0.7224841666666667,0.908297
+person,0,4,0.59600975,0.683796

@@ -1,0 +1,189 @@
+[
+  {
+    "image": "input.jpg",
+    "image_path": "data\\outputs\\ch3\\raw\\input.jpg",
+    "width": 914,
+    "height": 609,
+    "detections": [
+      {
+        "class_id": 2,
+        "class_name": "car",
+        "confidence": 0.908297,
+        "bbox": {
+          "x1": 0,
+          "y1": 444,
+          "x2": 202,
+          "y2": 532
+        },
+        "bbox_norm": {
+          "cx": 0.110447,
+          "cy": 0.801391,
+          "w": 0.220895,
+          "h": 0.14544
+        }
+      },
+      {
+        "class_id": 2,
+        "class_name": "car",
+        "confidence": 0.896411,
+        "bbox": {
+          "x1": 570,
+          "y1": 453,
+          "x2": 776,
+          "y2": 523
+        },
+        "bbox_norm": {
+          "cx": 0.736247,
+          "cy": 0.80114,
+          "w": 0.225748,
+          "h": 0.114071
+        }
+      },
+      {
+        "class_id": 2,
+        "class_name": "car",
+        "confidence": 0.751563,
+        "bbox": {
+          "x1": 674,
+          "y1": 435,
+          "x2": 803,
+          "y2": 506
+        },
+        "bbox_norm": {
+          "cx": 0.807587,
+          "cy": 0.772332,
+          "w": 0.141251,
+          "h": 0.116611
+        }
+      },
+      {
+        "class_id": 0,
+        "class_name": "person",
+        "confidence": 0.683796,
+        "bbox": {
+          "x1": 819,
+          "y1": 426,
+          "x2": 842,
+          "y2": 492
+        },
+        "bbox_norm": {
+          "cx": 0.909131,
+          "cy": 0.753009,
+          "w": 0.0250658,
+          "h": 0.108501
+        }
+      },
+      {
+        "class_id": 0,
+        "class_name": "person",
+        "confidence": 0.668036,
+        "bbox": {
+          "x1": 425,
+          "y1": 436,
+          "x2": 453,
+          "y2": 492
+        },
+        "bbox_norm": {
+          "cx": 0.480351,
+          "cy": 0.761829,
+          "w": 0.0314476,
+          "h": 0.0930304
+        }
+      },
+      {
+        "class_id": 2,
+        "class_name": "car",
+        "confidence": 0.625393,
+        "bbox": {
+          "x1": 309,
+          "y1": 428,
+          "x2": 354,
+          "y2": 478
+        },
+        "bbox_norm": {
+          "cx": 0.362471,
+          "cy": 0.744368,
+          "w": 0.0497374,
+          "h": 0.082135
+        }
+      },
+      {
+        "class_id": 2,
+        "class_name": "car",
+        "confidence": 0.608851,
+        "bbox": {
+          "x1": 589,
+          "y1": 425,
+          "x2": 638,
+          "y2": 463
+        },
+        "bbox_norm": {
+          "cx": 0.671294,
+          "cy": 0.729053,
+          "w": 0.0545082,
+          "h": 0.0625487
+        }
+      },
+      {
+        "class_id": 2,
+        "class_name": "car",
+        "confidence": 0.54439,
+        "bbox": {
+          "x1": 871,
+          "y1": 487,
+          "x2": 914,
+          "y2": 534
+        },
+        "bbox_norm": {
+          "cx": 0.976305,
+          "cy": 0.838166,
+          "w": 0.0465855,
+          "h": 0.0778911
+        }
+      },
+      {
+        "class_id": 0,
+        "class_name": "person",
+        "confidence": 0.520825,
+        "bbox": {
+          "x1": 497,
+          "y1": 434,
+          "x2": 519,
+          "y2": 495
+        },
+        "bbox_norm": {
+          "cx": 0.555721,
+          "cy": 0.763101,
+          "w": 0.0243532,
+          "h": 0.100338
+        }
+      },
+      {
+        "class_id": 0,
+        "class_name": "person",
+        "confidence": 0.511382,
+        "bbox": {
+          "x1": 228,
+          "y1": 413,
+          "x2": 248,
+          "y2": 467
+        },
+        "bbox_norm": {
+          "cx": 0.260107,
+          "cy": 0.722199,
+          "w": 0.0220703,
+          "h": 0.0885387
+        }
+      }
+    ],
+    "meta": {
+      "num_detections": 10,
+      "num_original": 24,
+      "min_conf_applied": 0.5,
+      "class_filter": [
+        "car",
+        "person"
+      ]
+    }
+  }
+]

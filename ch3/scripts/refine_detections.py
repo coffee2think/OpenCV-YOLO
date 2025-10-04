@@ -7,6 +7,15 @@ import json
 import sys
 from pathlib import Path
 from typing import Any
+from ultralytics import YOLO
+
+# =================================================================
+# [추가] YOLOv8n 기본 COCO 80 클래스 ID-이름 매핑
+# class_name이 JSON에 없을 경우, 이 정보를 사용하여 복구합니다.
+# =================================================================
+model = YOLO('yolov8n.pt')
+CLASS_ID_TO_NAME: dict[int, str] = model.names
+# =================================================================
 
 
 def parse_args() -> argparse.Namespace:
@@ -76,6 +85,11 @@ def detection_passes(
 
     class_id = detection.get("class_id")
     class_name = detection.get("class_name")
+    if class_name is None and isinstance(class_id, int):
+        recovered_name = CLASS_ID_TO_NAME.get(class_id)
+        if recovered_name:
+            class_name = recovered_name
+            detection["class_name"] = recovered_name # JSON에 실제로 class_name을 추가하지는 않지만, 이 함수 내에서 사용하기 위해 임시로 설정
 
     if allowed_ids and isinstance(class_id, int) and class_id in allowed_ids:
         return True

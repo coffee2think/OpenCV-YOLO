@@ -13,7 +13,7 @@
   ```bash
   pip install ultralytics opencv-python
   ```
-- 설치 후 `yolo --help` 또는 `python -m ultralytics --help`로 CLI가 동작하는지 확인하세요.
+- 설치 후 `yolo help` 또는 `python -m ultralytics --help`로 CLI가 동작하는지 확인하세요.
 
 ## 실습 플로우
 모든 스텝은 동일한 입력 파일 `data/inputs/input.webp`를 사용합니다.
@@ -21,7 +21,7 @@
 1. **YOLO로 경계 후보 추출**
    - 명령:
      ```bash
-     yolo predict model=yolov8n.pt source=data/inputs/input.webp project=data/outputs/ch2 name=yolo --save-txt
+     yolo predict model=yolov8n.pt source=data/inputs/input.webp project=data/outputs/ch2 name=yolo save_txt=True
      ```
    - 목적: 객체 바운딩 박스 좌표와 감지 이미지를 `data/outputs/ch2/yolo/`에 저장합니다. 텍스트 좌표는 이후 ROI 정제에 활용합니다.
 2. **ROI 주석 및 경계 기준선 확보**
@@ -36,22 +36,24 @@
    - 목적: 리사이즈·회색조·블러로 노이즈를 줄인 뒤 Canny 에지 맵을 생성해 `data/outputs/ch2/`에 단계별 이미지를 저장합니다.
    - 실행:
      ```bash
-     python ch2/scripts/preprocess_pipeline.py \
-       --source data/inputs/input.webp \
-       --scale 0.6 \
-       --blur-kernel 9 \
+     python ch2/scripts/preprocess_pipeline.py ^
+       --source data/inputs/input.webp ^
+       --scale 0.6 ^
+       --blur-kernel 9 ^
        --canny-thresholds 80,160
      ```
+   - windows cmd에서는 \ 대신 ^ 사용하여 줄바꿈
 4. **HSV 마스크로 윤곽 강조 (선택)**
    - 스크립트: `ch2/scripts/color_mask_demo.py`
    - 목적: 특정 색상 범위를 마스킹해 경계선 주변 영역을 강조하거나 배경을 제거합니다.
    - 실행:
      ```bash
-     python ch2/scripts/color_mask_demo.py \
-       --source data/inputs/input.webp \
-       --lower-hsv 35,80,80 \
+     python ch2/scripts/color_mask_demo.py ^
+       --source data/inputs/input.webp ^
+       --lower-hsv 35,80,80 ^
        --upper-hsv 90,255,255
      ```
+   - windows cmd에서는 \ 대신 ^ 사용하여 줄바꿈
 
 ## 산출물 체크리스트
 - YOLO 추론 결과 이미지와 좌표 (`data/outputs/ch2/yolo/`)

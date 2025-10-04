@@ -13,20 +13,20 @@
   ```bash
   pip install ultralytics opencv-python pandas
   ```
-- `yolo --help` 또는 `python -m ultralytics --help`로 CLI 사용 가능 여부를 확인합니다.
+- `yolo help` 또는 `python -m ultralytics --help`로 CLI 사용 가능 여부를 확인합니다.
 - `data/inputs/`에 감지할 이미지(예: `data/inputs/input.webp`)가 준비돼 있어야 합니다.
 
 ## 실습 플로우
 1. **YOLO로 원시 감지 실행**
    - 명령:
      ```bash
-     yolo predict \
-       model=yolov8n.pt \
-       source=data/inputs/input.webp \
-       project=data/outputs/ch3 \
-       name=raw \
-       save=True \
-       save_txt=True \
+     yolo predict ^
+       model=yolov8n.pt ^
+       source=data/inputs/input.webp ^
+       project=data/outputs/ch3 ^
+       name=raw ^
+       save=True ^
+       save_txt=True ^
        save_conf=True
      ```
      > CLI 구문은 `옵션=값` 형태만 허용합니다. 대체로 `python -m ultralytics predict … save_txt=True save_conf=True`로 실행해도 동일한 결과를 얻을 수 있습니다.
@@ -36,8 +36,8 @@
    - 목적: YOLO TXT 파일을 읽어 각 감지의 클래스, 박스, 신뢰도를 픽셀 좌표로 환산한 JSON(`detections_raw.json`)을 생성합니다.
    - 실행 예시:
      ```bash
-     python ch3/scripts/export_detections.py \
-       --runs-dir data/outputs/ch3/raw \
+     python ch3/scripts/export_detections.py ^
+       --runs-dir data/outputs/ch3/raw ^
        --output data/outputs/ch3/detections_raw.json
      ```
 3. **신뢰도 필터링 & 정제**
@@ -45,19 +45,21 @@
    - 목적: `detections_raw.json`에서 신뢰도 임계값과 클래스 필터를 적용하고, 필요 시 좌표를 정규화해 `detections_refined.json`으로 저장합니다.
    - 실행 예시:
      ```bash
-     python ch3/scripts/refine_detections.py \
-       --input data/outputs/ch3/detections_raw.json \
-       --output data/outputs/ch3/detections_refined.json \
-       --min-conf 0.5 \
+     python ch3/scripts/refine_detections.py ^
+       --input data/outputs/ch3/detections_raw.json ^
+       --output data/outputs/ch3/detections_refined.json ^
+       --min-conf 0.5 ^
        --classes person,car
      ```
+   - `detections_raw.json` 파일에 `class_name`이 빠져있음. 그래서 `detection_refined.json`에 아무런 객체도 필터링 되지 않음
+   - `yolov8n.pt` 파일 안에 `class` 정보가 담겨있음. `model.names`로 꺼내 매칭
 4. **요약 리포트 생성 (선택)**
    - 스크립트: `ch3/scripts/detection_summary.py`
    - 목적: 정제된 JSON을 바탕으로 클래스별 감지 수와 평균 신뢰도를 요약 표로 출력하거나 CSV/이미지(바 차트)로 저장합니다.
    - 실행 예시:
      ```bash
-     python ch3/scripts/detection_summary.py \
-       --input data/outputs/ch3/detections_refined.json \
+     python ch3/scripts/detection_summary.py ^
+       --input data/outputs/ch3/detections_refined.json ^
        --output data/outputs/ch3/summary.csv
      ```
 
